@@ -32,11 +32,11 @@ To manage multiple projects customized config files are used so user is able to 
 
 Config files for projects are placed here
 
-https://github.com/leraroy/cypress-tests/config.cypress.json
+https://github.com/leraroy/cypress-tests/blob/master/cypress.test.config.js
 
 and
 
-https://github.com/leraroy/cypress-tests/config.test.cypress.json
+https://github.com/leraroy/cypress-tests/blob/master/cypress.config.js
 
 
 ### Test Setup
