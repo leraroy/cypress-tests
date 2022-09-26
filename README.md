@@ -32,11 +32,11 @@ To manage multiple projects customized config files are used so user is able to 
 
 Config files for projects are placed here
 
-https://github.com/openedx/cypress-e2e-tests/tree/master/config.cypress.json
+https://github.com/openedx/cypress-tests/config.cypress.json
 
 and
 
-https://github.com/openedx/cypress-e2e-tests/tree/master/config.test.cypress.json
+https://github.com/openedx/cypress-tests/config.test.cypress.json
 
 
 ### Test Setup
