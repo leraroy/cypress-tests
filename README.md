@@ -42,9 +42,9 @@ https://github.com/leraroy/cypress-tests/blob/master/cypress.config.js
 ### Test Setup
 
 1. Clone this repository
-2. To run tests "npm tests:run"
+2. To run tests "npm test:run"
 
-##### To see reports without installation
+#### To see reports without installation
 Go to this link to see Allure report: https://leraroy.github.io/cypress-tests/
 
 
