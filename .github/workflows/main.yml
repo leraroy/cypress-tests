@@ -26,7 +26,24 @@ jobs:
       - uses: actions/checkout@v3
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v4
+      #- name: Cypress run
+       # uses: cypress-io/github-action@v4
+       # with:
+        #  browser: chrome
+      - name: Install a project with a clean slate
+        run: npm ci
+        
+      - name: Run Cypress tests
+        run: npm run tests:chrome
+        continue-on-error: true
+      
+   # - name: Merge test results into one
+    #  run: npm run report:merge
+      - name: Generate HTML report
+        run: npm install --save-dev mochawesome-report-generator
+        
+      - name: Deploy report page
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          browser: chrome
+         github_token: ${{ secrets.GITHUB_TOKEN }}
+         publish_dir: ./public
