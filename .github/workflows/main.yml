@@ -26,11 +26,11 @@ jobs:
        uses: actions/checkout@v2
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
-     - name: Cypress run
-       uses: cypress-io/github-action@v4
+     #- name: Cypress run
+      # uses: cypress-io/github-action@v4
        
-     - name: Install allure
-       run: npm install -g allure-commandline --save-dev
+     #- name: Install allure
+      # run: npm install -g allure-commandline --save-dev
        
      - name: Reports Generate
        run: npm run test
