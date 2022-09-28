@@ -34,9 +34,8 @@ jobs:
     - name: Cypress run
       uses: cypress-io/github-action@v4
       with:
-          build: npm run build
-          start: npm start
-              
+          browser: firefox
+
     - name: Reports Generate
       run: npm run allure-report
        
