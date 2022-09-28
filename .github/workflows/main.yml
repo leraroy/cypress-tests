@@ -37,13 +37,16 @@ jobs:
         run: npm run tests:chrome
         continue-on-error: true
       
-   # - name: Merge test results into one
-    #  run: npm run report:merge
+      - name: Merge test results into one
+        run: npm install --save-dev mochawesome-merge
+        
       - name: Generate HTML report
         run: npm install --save-dev mochawesome-report-generator
         
       - name: Deploy report page
+        if: always()
         uses: peaceiris/actions-gh-pages@v3
-        with:
-         github_token: ${{ secrets.GITHUB_TOKEN }}
-         publish_dir: ./public
+        env:
+          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: cypress/reports
