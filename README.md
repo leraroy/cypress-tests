@@ -22,7 +22,7 @@ This repo is meant to contain a sample for e2e tests
 
 ### Protocols for Test Design
 
-In the this project,  the following approach was used:
+In the this project, the following approach was used:
 
 Page Object model is used in spite of what Cypress site says, it increases readability of code and is much easier to manage
 
@@ -40,11 +40,6 @@ https://github.com/leraroy/cypress-tests/blob/master/cypress.config.js
 
 
 ### Test Setup
-Installations
-You need to have Node.js installed before using Cypress.
 
-For the rest of the installations move to project folder in command prompt and type
-
-npm install
-
-which will install Cypress and other supporting tools
+1. Clone this repository
+2. To run tests "npm tests:run"
