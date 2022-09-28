@@ -31,9 +31,7 @@ jobs:
        # with:
         #  browser: chrome
       - name: Install a project with a clean slate
-        run: |
-         npm ci
-         $(npm bin)/cypress verify
+        run: npm ci
         
       - name: Run Cypress tests
         run: npm run test:chrome
@@ -51,7 +49,7 @@ jobs:
        # run: npm install --save-dev mochawesome-report-generator
        
       - name: Get Allure history
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         if: always()
         continue-on-error: true
         with:
