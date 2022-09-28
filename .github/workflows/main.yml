@@ -22,31 +22,30 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-      #- name: Cypress run
-       # uses: cypress-io/github-action@v4
-       # with:
-        #  browser: chrome
-      - name: Install a project with a clean slate
-        run: npm ci
-        
-      - name: Run Cypress tests
-        run: npm run tests:chrome
-        continue-on-error: true
+    - uses: actions/checkout@v2
+    - name: Install a project with a clean slate
+      run: |
+        npm ci
+        $(npm bin)/cypress cache path
+        $(npm bin)/cypress cache list
+        $(npm bin)/cypress verify
+    - name: Run Cypress tests
+      run: npm run test:chrome
+      continue-on-error: true
       
-      - name: Merge test results into one
-        run: npm install --save-dev mochawesome-merge
+    - name: Copy test execution videos
+      run: |
+        mkdir public
+        cp -r cypress/reports
         
-      - name: Generate HTML report
-        run: npm install --save-dev mochawesome-report-generator
-        
-      - name: Deploy report page
-        if: always()
-        uses: peaceiris/actions-gh-pages@v3
-        env:
-          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: cypress/reports
+    - name: Merge test results into one
+      run: npm install --save-dev mochawesome-merge
+      
+    - name: Generate HTML report
+      run: npm install --save-dev mochawesome-report-generator
+      
+    - name: Deploy report page
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
