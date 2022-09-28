@@ -28,14 +28,14 @@ describe('Telnyx', () => {
     cy.title().should('contain', 'Sign Up');
   });
 
-  it('should enter email on main page', () => {
+  it('should after enter email on main page, show email on register page', () => {
     mainPage.enterEmail('qsbhbhsx@shdb.bdb');
     mainPage.clickTryForFree();
     registerPage.email.should('have.value', 'qsbhbhsx@shdb.bdb');
     cy.title().should('contain', 'Sign Up');
   });
 
-  it('should  registration with empty credentials', () => {
+  it('should registration with empty credentials', () => {
     mainPage.clickSignUp();
     cy.wait(3000);
     registerPage.clickSubmit();

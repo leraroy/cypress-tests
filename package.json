@@ -1,11 +1,14 @@
 {
   "scripts": {
-  "test:run": "cypress open"
-},
+    "tests:run": "cypress open",
+    "tests:chrome": "cypress run --browser chrome",
+    "tests:firefox":"cypress run --browser firefox"
+  },
   "dependencies": {
     "cypress": "^10.8.0"
   },
   "devDependencies": {
-    "@faker-js/faker": "^7.5.0"
+    "@faker-js/faker": "^7.5.0",
+    "cypress-mochawesome-reporter": "^3.2.2"
   }
 }
