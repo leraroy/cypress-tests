@@ -36,24 +36,47 @@ jobs:
          $(npm bin)/cypress verify
         
       - name: Run Cypress tests
-        run: npm run tests:chrome
+        run: npm run test:chrome
         continue-on-error: true
         
-      - name: Copy test execution videos
-        run: |
-          mkdir public
-          cp -r cypress/screenshots public/screenshots
+      #- name: Copy test execution videos
+       # run: |
+        #  mkdir public
+         # cp -r cypress/screenshots public/screenshots
       
-      - name: Merge test results into one
-        run: npm install --save-dev mochawesome-merge
+     # - name: Merge test results into one
+      #  run: npm install --save-dev mochawesome-merge
         
-      - name: Generate HTML report
-        run: npm install --save-dev mochawesome-report-generator
-        
-      - name: Deploy report page
+      #- name: Generate HTML report
+       # run: npm install --save-dev mochawesome-report-generator
+       
+      - name: Get Allure history
+        uses: actions/checkout@v2
+        if: always()
+        continue-on-error: true
+        with:
+           ref: allure
+           path: allure
+
+      - name: Generate Allure Report
+        uses: simple-elf/allure-report-action@master
+        if: always()
+        with:
+            allure_results: allure-results
+            gh_pages: allure
+
+      - name: Deploy report to Github Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v3
         with:
-          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: ./public
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            publish_branch: allure
+            publish_dir: allure-history
+        
+     # - name: Deploy report page
+      #  if: always()
+       # uses: peaceiris/actions-gh-pages@v3
+        #with:
+         # PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          #PUBLISH_BRANCH: gh-pages
+          #PUBLISH_DIR: ./public
