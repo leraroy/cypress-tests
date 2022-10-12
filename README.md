@@ -22,7 +22,6 @@ https://github.com/leraroy/cypress-tests/blob/master/cypress.config.js
 - Go to the terminal and execute "npm install" command
 
 ### How to run the tests on windows
-
 Go to the terminal and run any of the following commands:
  <ol>
    <li>Run the "npm run test:run"  command to run test in cypress GUI</li>  
